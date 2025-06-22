@@ -1,0 +1,19 @@
+digraph g {
+
+	s0 [shape="circle" label="s0"];
+	s0 -> s0 [label="LL_ADV_CONNECT_IND / LL_CTRL_PERIPHERAL_FEATURE_REQ"];
+	s0 -> s0 [label="LL_CTRL_ENC_REQ / NORESPONSE"];
+	s0 -> s0 [label="LL_CTRL_START_ENC_RSP / NORESPONSE"];
+	s0 -> s0 [label="LL_CTRL_PAUSE_ENC_REQ / NORESPONSE"];
+	s0 -> s0 [label="LL_CTRL_PAUSE_ENC_RSP / NORESPONSE"];
+	s0 -> s0 [label="SM_PAIRING_REQ_SC / NORESPONSE"];
+	s0 -> s0 [label="SM_CONFIRM / NORESPONSE"];
+	s0 -> s0 [label="SM_RANDOM / NORESPONSE"];
+	s0 -> s0 [label="SM_PUBLIC_KEY / NORESPONSE"];
+	s0 -> s0 [label="SM_DHKEY_CHECK / NORESPONSE"];
+	s0 -> s0 [label="ATT_READ_REQ / NORESPONSE"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+
+}

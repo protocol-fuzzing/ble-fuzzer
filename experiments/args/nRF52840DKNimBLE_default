@@ -1,0 +1,12 @@
+state-fuzzer-server
+
+-output
+experiments/results/nRF52840DKNimBLE_default
+
+-equivalenceQueryBound
+5000
+
+-logQueries
+
+-mapper
+nRF52840DKNimBLE

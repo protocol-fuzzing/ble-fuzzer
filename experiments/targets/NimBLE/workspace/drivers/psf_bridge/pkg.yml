@@ -1,0 +1,12 @@
+pkg.name: drivers/psf_bridge
+pkg.description: BLE driver for testing.
+pkg.author: 
+pkg.homepage: 
+pkg.keywords:
+    - ble
+    - bluetooth
+
+pkg.apis: ble_driver
+pkg.deps:
+    - "@apache-mynewt-nimble/nimble/controller"
+    - "@apache-mynewt-core/crypto/tinycrypt"

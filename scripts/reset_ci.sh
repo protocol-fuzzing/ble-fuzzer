@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "RESETTING THE SUT IN THE CI IS NOT IMPLEMENTED"

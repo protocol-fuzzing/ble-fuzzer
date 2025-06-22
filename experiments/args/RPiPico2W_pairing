@@ -1,0 +1,12 @@
+state-fuzzer-server
+
+-output
+experiments/results/RPiPico2W_pairing
+
+-alphabet
+experiments/alphabets/pairing.xml
+
+-logQueries
+
+-mapper
+RPiPico2W

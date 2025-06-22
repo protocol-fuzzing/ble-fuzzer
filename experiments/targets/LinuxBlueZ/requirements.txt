@@ -1,0 +1,2 @@
+bluez-peripheral==0.1.7
+dbus-next==0.2.3

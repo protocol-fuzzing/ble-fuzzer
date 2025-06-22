@@ -1,0 +1,14 @@
+<!-- Inputs necessary for "LE Secure Connections" pairing and key re-negotiation -->
+<alphabet>
+    <InputBLE name="LL_ADV_CONNECT_IND"/>
+    <InputBLE name="LL_CTRL_ENC_REQ"/>
+    <InputBLE name="LL_CTRL_START_ENC_RSP"/>
+    <InputBLE name="LL_CTRL_PAUSE_ENC_REQ"/>
+    <InputBLE name="LL_CTRL_PAUSE_ENC_RSP"/>
+    <InputBLE name="SM_PAIRING_REQ_SC"/>
+    <InputBLE name="SM_CONFIRM"/>
+    <InputBLE name="SM_RANDOM"/>
+    <InputBLE name="SM_PUBLIC_KEY"/>
+    <InputBLE name="SM_DHKEY_CHECK"/>
+    <InputBLE name="ATT_READ_REQ"/>
+</alphabet>

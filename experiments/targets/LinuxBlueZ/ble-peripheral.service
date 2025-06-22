@@ -1,0 +1,7 @@
+[Unit]
+Description=BLE Peripheral
+
+[Service]
+Type=simple
+ExecStart=/<path-to-this-repo>/ble-fuzzer/experiments/targets/LinuxBlueZ/venv/bin/python3 /<path-to-this-repo>/ble-fuzzer/experiments/targets/LinuxBlueZ/ble_peripheral.py
+Environment=PYTHONUNBUFFERED=1

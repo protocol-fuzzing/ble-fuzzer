@@ -1,0 +1,16 @@
+pkg.name: "targets/sim_testapp"
+pkg.type: "target"
+pkg.description: 
+pkg.author: 
+pkg.homepage: 
+
+pkg.deps:
+    - "drivers/psf_bridge"
+
+pkg.cflags:
+    - -Wno-incompatible-pointer-types
+#    - -fsanitize=address,undefined
+
+pkg.lflags:
+    - -Wl,--wrap=ble_ll_sched_conn_reschedule
+#    - -fsanitize=address,undefined

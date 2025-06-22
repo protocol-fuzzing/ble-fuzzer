@@ -1,0 +1,69 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  NimBLE:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ble-fuzzer
+      - uses: actions/checkout@v4
+        with:
+          repository: 'protocol-fuzzing/protocol-state-fuzzer'
+          ref: 'ddef362dd042dba83e6a50067e38414194d72e60'
+          path: protocol-state-fuzzer
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 'stable'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Build ProtocolState-Fuzzer
+        shell: bash
+        run: |
+             cd protocol-state-fuzzer
+             bash install.sh
+      - name: Build ble-fuzzer
+        shell: bash
+        run: |
+             set -ex
+             cd ble-fuzzer
+             source scripts/setup_venv.sh
+             mvn package
+      - name: Install newt
+        shell: bash
+        run: |
+             go install mynewt.apache.org/newt/newt@latest
+      - name: Build NimBLE
+        shell: bash
+        run: |
+             set -ex
+             cd ble-fuzzer/experiments/targets/NimBLE/workspace
+             newt upgrade --shallow 1
+             newt build sim_testapp
+      - name: Test NimBLE
+        shell: bash
+        run: |
+             set -ex
+             cd ble-fuzzer
+             source scripts/setup_venv.sh
+             experiments/targets/NimBLE/workspace/bin/targets/sim_testapp/app/apps/testapp/testapp.elf | grep --line-buffered '^uart1' &> iface.txt &
+             sleep 2
+             SERIAL_PORT=$(cat iface.txt | cut -d ' ' -f 3)
+             java -jar target/ble-fuzzer-1.0-SNAPSHOT.jar @experiments/args/NimBLE_pairing -mapper CI -adapter $SERIAL_PORT -roundLimit 4
+             ./scripts/diff_hyps.sh experiments/results_saved/NimBLE_pairing experiments/results/NimBLE_pairing 4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: NimBLE_pairing
+          path: experiments/results/NimBLE_pairing/
+          if-no-files-found: error
+          retention-days: 7

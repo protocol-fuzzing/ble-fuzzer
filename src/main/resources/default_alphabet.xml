@@ -1,0 +1,28 @@
+<alphabet>
+    <InputBLE name="LL_ADV_SCAN_REQ"/>
+    <InputBLE name="LL_ADV_CONNECT_IND"/>
+    <InputBLE name="LL_CTRL_TERMINATE_IND"/>
+    <InputBLE name="LL_CTRL_ENC_REQ"/>
+    <InputBLE name="LL_CTRL_START_ENC_RSP"/>
+    <InputBLE name="LL_CTRL_FEATURE_REQ"/>
+    <InputBLE name="LL_CTRL_FEATURE_RSP"/>
+    <InputBLE name="LL_CTRL_PAUSE_ENC_REQ"/>
+    <InputBLE name="LL_CTRL_PAUSE_ENC_RSP"/>
+    <InputBLE name="LL_CTRL_VERSION_IND"/>
+    <InputBLE name="LL_CTRL_LENGTH_REQ"/>
+    <InputBLE name="LL_CTRL_LENGTH_RSP"/>
+    <InputBLE name="SM_PAIRING_REQ"/>
+    <InputBLE name="SM_PAIRING_REQ_SC"/>
+    <InputBLE name="SM_CONFIRM"/>
+    <InputBLE name="SM_RANDOM"/>
+    <InputBLE name="SM_ENCRYPTION_INFORMATION"/>
+    <InputBLE name="SM_CENTRAL_IDENTIFICATION"/>
+    <InputBLE name="SM_IDENTITY_INFORMATION"/>
+    <InputBLE name="SM_IDENTITY_ADDRESS_INFORMATION"/>
+    <InputBLE name="SM_SIGNING_INFORMATION"/>
+    <InputBLE name="SM_PUBLIC_KEY"/>
+    <InputBLE name="SM_DHKEY_CHECK"/>
+    <InputBLE name="ATT_EXCHANGE_MTU_REQ"/>
+    <InputBLE name="ATT_EXCHANGE_MTU_RSP"/>
+    <InputBLE name="ATT_READ_REQ"/>
+</alphabet>

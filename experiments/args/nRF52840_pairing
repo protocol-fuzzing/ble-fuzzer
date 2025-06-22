@@ -1,0 +1,15 @@
+state-fuzzer-server
+
+-output
+experiments/results/nRF52840_pairing
+
+-alphabet
+experiments/alphabets/pairing.xml
+
+-equivalenceQueryBound
+5000
+
+-logQueries
+
+-mapper
+nRF52840

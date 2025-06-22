@@ -1,0 +1,67 @@
+digraph g {
+
+	s0 [shape="circle" label="s0"];
+	s1 [shape="circle" label="s1"];
+	s2 [shape="circle" label="s2"];
+	s3 [shape="circle" label="s3"];
+	s4 [shape="circle" label="s4"];
+	s0 -> s1 [label="LL_ADV_CONNECT_IND / LL_CTRL_PERIPHERAL_FEATURE_REQ"];
+	s0 -> s0 [label="LL_CTRL_ENC_REQ / NORESPONSE"];
+	s0 -> s0 [label="LL_CTRL_START_ENC_RSP / NORESPONSE"];
+	s0 -> s0 [label="LL_CTRL_PAUSE_ENC_REQ / NORESPONSE"];
+	s0 -> s0 [label="LL_CTRL_PAUSE_ENC_RSP / NORESPONSE"];
+	s0 -> s0 [label="SM_PAIRING_REQ_SC / NORESPONSE"];
+	s0 -> s0 [label="SM_CONFIRM / NORESPONSE"];
+	s0 -> s0 [label="SM_RANDOM / NORESPONSE"];
+	s0 -> s0 [label="SM_PUBLIC_KEY / NORESPONSE"];
+	s0 -> s0 [label="SM_DHKEY_CHECK / NORESPONSE"];
+	s0 -> s0 [label="ATT_READ_REQ / NORESPONSE"];
+	s1 -> s1 [label="LL_ADV_CONNECT_IND / NORESPONSE"];
+	s1 -> s1 [label="LL_CTRL_ENC_REQ / LL_CTRL_ENC_RSP+LL_CTRL_REJECT_IND"];
+	s1 -> s1 [label="LL_CTRL_START_ENC_RSP / NORESPONSE"];
+	s1 -> s1 [label="LL_CTRL_PAUSE_ENC_REQ / LL_CTRL_UNKNOWN_RSP"];
+	s1 -> s1 [label="LL_CTRL_PAUSE_ENC_RSP / LL_CTRL_UNKNOWN_RSP"];
+	s1 -> s2 [label="SM_PAIRING_REQ_SC / SM_PAIRING_RSP"];
+	s1 -> s1 [label="SM_CONFIRM / NORESPONSE"];
+	s1 -> s1 [label="SM_RANDOM / NORESPONSE"];
+	s1 -> s1 [label="SM_PUBLIC_KEY / SM_FAILED"];
+	s1 -> s1 [label="SM_DHKEY_CHECK / NORESPONSE"];
+	s1 -> s1 [label="ATT_READ_REQ / ATT_ERROR_RSP"];
+	s2 -> s2 [label="LL_ADV_CONNECT_IND / NORESPONSE"];
+	s2 -> s2 [label="LL_CTRL_ENC_REQ / LL_CTRL_ENC_RSP+LL_CTRL_REJECT_IND"];
+	s2 -> s2 [label="LL_CTRL_START_ENC_RSP / NORESPONSE"];
+	s2 -> s2 [label="LL_CTRL_PAUSE_ENC_REQ / LL_CTRL_UNKNOWN_RSP"];
+	s2 -> s2 [label="LL_CTRL_PAUSE_ENC_RSP / LL_CTRL_UNKNOWN_RSP"];
+	s2 -> s1 [label="SM_PAIRING_REQ_SC / SM_FAILED"];
+	s2 -> s1 [label="SM_CONFIRM / NORESPONSE"];
+	s2 -> s1 [label="SM_RANDOM / NORESPONSE"];
+	s2 -> s3 [label="SM_PUBLIC_KEY / SM_CONFIRM+SM_PUBLIC_KEY"];
+	s2 -> s1 [label="SM_DHKEY_CHECK / NORESPONSE"];
+	s2 -> s2 [label="ATT_READ_REQ / ATT_ERROR_RSP"];
+	s3 -> s3 [label="LL_ADV_CONNECT_IND / NORESPONSE"];
+	s3 -> s3 [label="LL_CTRL_ENC_REQ / LL_CTRL_ENC_RSP+LL_CTRL_REJECT_IND"];
+	s3 -> s3 [label="LL_CTRL_START_ENC_RSP / NORESPONSE"];
+	s3 -> s3 [label="LL_CTRL_PAUSE_ENC_REQ / LL_CTRL_UNKNOWN_RSP"];
+	s3 -> s3 [label="LL_CTRL_PAUSE_ENC_RSP / LL_CTRL_UNKNOWN_RSP"];
+	s3 -> s1 [label="SM_PAIRING_REQ_SC / SM_FAILED"];
+	s3 -> s1 [label="SM_CONFIRM / NORESPONSE"];
+	s3 -> s4 [label="SM_RANDOM / SM_RANDOM"];
+	s3 -> s1 [label="SM_PUBLIC_KEY / SM_FAILED"];
+	s3 -> s1 [label="SM_DHKEY_CHECK / NORESPONSE"];
+	s3 -> s3 [label="ATT_READ_REQ / ATT_ERROR_RSP"];
+	s4 -> s4 [label="LL_ADV_CONNECT_IND / NORESPONSE"];
+	s4 -> s4 [label="LL_CTRL_ENC_REQ / LL_CTRL_ENC_RSP+LL_CTRL_REJECT_IND"];
+	s4 -> s4 [label="LL_CTRL_START_ENC_RSP / NORESPONSE"];
+	s4 -> s4 [label="LL_CTRL_PAUSE_ENC_REQ / LL_CTRL_UNKNOWN_RSP"];
+	s4 -> s4 [label="LL_CTRL_PAUSE_ENC_RSP / LL_CTRL_UNKNOWN_RSP"];
+	s4 -> s1 [label="SM_PAIRING_REQ_SC / SM_FAILED"];
+	s4 -> s1 [label="SM_CONFIRM / NORESPONSE"];
+	s4 -> s1 [label="SM_RANDOM / NORESPONSE"];
+	s4 -> s1 [label="SM_PUBLIC_KEY / SM_FAILED"];
+	s4 -> s4 [label="SM_DHKEY_CHECK / SM_DHKEY_CHECK"];
+	s4 -> s4 [label="ATT_READ_REQ / ATT_ERROR_RSP"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+
+}

@@ -1,0 +1,49 @@
+syscfg.vals:
+    CONSOLE_IMPLEMENTATION: full
+    LOG_IMPLEMENTATION: full
+    STATS_IMPLEMENTATION: full
+
+    # Disable central and observer roles.
+    BLE_ROLE_BROADCASTER: 1
+    BLE_ROLE_CENTRAL: 0
+    BLE_ROLE_OBSERVER: 0
+    BLE_ROLE_PERIPHERAL: 1
+
+    # Log reboot messages to a flash circular buffer.
+    REBOOT_LOG_FCB: 1
+    LOG_FCB: 1
+    CONFIG_FCB: 1
+
+    # Enable smp commands.
+    STATS_MGMT: 1
+    LOG_MGMT: 1
+    CONFIG_MGMT: 1
+
+    # OS main/default task
+    OS_MAIN_STACK_SIZE: 4000
+
+    # Lots of smaller mbufs are required for smp using typical BLE ATT MTU
+    # values.
+    MSYS_1_BLOCK_COUNT: 100
+    MSYS_1_BLOCK_SIZE: 308
+
+    BLE_SVC_GAP_DEVICE_NAME: '"nimble-bleprph"'
+    #BLE_PUBLIC_DEV_ADDR: '(uint8_t[6]){0x66, 0x55, 0x44, 0x33, 0x22, 0x11}'
+
+    # Whether to save data to sys/config, or just keep it in RAM.
+    BLE_STORE_CONFIG_PERSIST: 0
+
+    BLE_TRANSPORT_HS: native
+    BLE_TRANSPORT_LL: native
+    
+    BLE_LL_PRIO: 3
+    BLE_LL_STACK_SIZE: 4000
+    BLE_LL_CONN_INIT_MAX_TX_BYTES: 251
+    BLE_EXT_ADV: 1
+    BLE_MAX_CONNECTIONS: 8
+
+    BLE_SM_BONDING: 1
+    BLE_SM_LEGACY: 1
+    BLE_SM_SC: 1
+
+    MCU_NATIVE_USE_SIGNALS: 0

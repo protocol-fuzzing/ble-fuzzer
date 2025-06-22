@@ -1,0 +1,12 @@
+state-fuzzer-server
+
+-output
+experiments/results/ArduinoNanoESP32_pairing
+
+-alphabet
+experiments/alphabets/pairing.xml
+
+-logQueries
+
+-mapper
+ArduinoNanoESP32
