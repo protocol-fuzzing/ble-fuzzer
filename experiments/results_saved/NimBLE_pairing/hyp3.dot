@@ -62,7 +62,7 @@ digraph g {
 	s4 -> s1 [label="SM_RANDOM / NORESPONSE"];
 	s4 -> s4 [label="ATT_READ_REQ / ATT_ERROR_RSP"];
 	s5 -> s0 [label="LL_ADV_CONNECT_IND / NORESPONSE"];
-	s5 -> s3 [label="LL_CTRL_ENC_REQ / LL_CTRL_ENC_RSP+LL_CTRL_REJECT_IND"];
+	s5 -> s5 [label="LL_CTRL_ENC_REQ / NORESPONSE"];
 	s5 -> s1 [label="LL_CTRL_START_ENC_RSP / LL_CTRL_START_ENC_RSP"];
 	s5 -> s0 [label="LL_CTRL_FEATURE_REQ / NORESPONSE"];
 	s5 -> s5 [label="LL_CTRL_PAUSE_ENC_REQ / NORESPONSE"];

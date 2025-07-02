@@ -47,7 +47,16 @@ jobs:
         run: |
              set -ex
              cd ble-fuzzer/experiments/targets/NimBLE/workspace
+             # Clone everything shallow and then unshallow mynewt-nimble
+             # to pin the version of our target. This is not ideal and I'm
+             # not sure if the interface between mynewt-core and mynewt-nimble
+             # can break when the former is updated. When they do a proper
+             # release again, we should pin the versions in project.yml instead.
              newt upgrade --shallow 1
+             cd repos/apache-mynewt-nimble
+             git fetch --unshallow
+             git checkout 4659d199835ca680631fa3d54494377c8796e780
+             cd ../..
              newt build sim_testapp
       - name: Test NimBLE
         shell: bash
@@ -58,12 +67,13 @@ jobs:
              experiments/targets/NimBLE/workspace/bin/targets/sim_testapp/app/apps/testapp/testapp.elf | grep --line-buffered '^uart1' &> iface.txt &
              sleep 2
              SERIAL_PORT=$(cat iface.txt | cut -d ' ' -f 3)
-             java -jar target/ble-fuzzer-1.0-SNAPSHOT.jar @experiments/args/NimBLE_pairing -mapper CI -adapter $SERIAL_PORT -roundLimit 4
+             mkdir -p experiments/results/NimBLE_pairing
+             java -jar target/ble-fuzzer-1.0-SNAPSHOT.jar @experiments/args/NimBLE_pairing -mapper CI -adapter $SERIAL_PORT -roundLimit 4 &> experiments/results/NimBLE_pairing/test.log
              ./scripts/diff_hyps.sh experiments/results_saved/NimBLE_pairing experiments/results/NimBLE_pairing 4
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: NimBLE_pairing
-          path: experiments/results/NimBLE_pairing/
+          path: ble-fuzzer/experiments/results/NimBLE_pairing/
           if-no-files-found: error
           retention-days: 7
