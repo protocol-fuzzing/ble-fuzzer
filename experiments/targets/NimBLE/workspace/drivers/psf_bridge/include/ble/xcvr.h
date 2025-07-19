@@ -24,7 +24,7 @@
 extern "C" {
 #endif
 
-/* Transceiver specific defintions */
+/* Transceiver specific definitions */
 #define XCVR_RX_START_DELAY_USECS     (140)
 #define XCVR_TX_START_DELAY_USECS     (140)
 #define XCVR_PROC_DELAY_USECS         (100)

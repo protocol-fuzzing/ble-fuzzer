@@ -144,7 +144,7 @@ class BLESUL:
         # Terminate the current connection (if there is one)
         if hasattr(self, 'access_address'):
             # We don't expect a response.
-            # The scan request below will also take care of reading resonse packets.
+            # The scan request below will also take care of reading response packets.
             self.send(self.packets['LL_CTRL_TERMINATE_IND'](self))
             time.sleep(self.recv_s_min)
         
@@ -170,7 +170,7 @@ class BLESUL:
         self.atype = 0
         self.dhkey_check = b'\x00' * 16
 
-        # Keep track of the input/outpus symbols in the current sequence
+        # Keep track of the input/output symbols in the current sequence
         self.input_sequence = []
         self.output_sequence = []
 
@@ -226,7 +226,7 @@ class BLESUL:
         # We have to receive the response packets one-by-one because in case a 2nd
         # LL_CTRL_ENC_REQ packet is sent, the LL_CTRL_ENC_RSP will be encrypted with
         # the old key/iv and the LL_CTRL_START_ENC_REQ with the new key/iv.
-        # That means we have to switch the key/iv inbetween.
+        # That means we have to switch the key/iv in between.
         res_pkts = []
         time_start = time.time()
         while not self.is_rsp_complete(res_pkts, time.time() - time_start):

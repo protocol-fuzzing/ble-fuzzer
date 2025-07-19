@@ -216,7 +216,7 @@ static void recv_packet(struct os_event *ev) {
         }
 
         for(int i_pkt = 0; i_pkt < 6; i_pkt++) {
-            // After any incoming packet, acceppted or not, we send empty packets
+            // After any incoming packet, accepted or not, we send empty packets
             // if we're on a data channel. This is to simulate the mechanism that
             // keeps the connection alive and allows the NimBLE stack to return
             // multiple Bluetooth packets. PSF is not aware of this as this is
