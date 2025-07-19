@@ -21,7 +21,7 @@ class LBSService(Service):
 
 
 async def main():
-    # Alternativly you can request this bus directly from dbus_next.
+    # Alternatively, you can request this bus directly from dbus_next.
     bus = await get_message_bus()
 
     service = LBSService()
