@@ -14,9 +14,9 @@ else
     pip3 install -r requirements.txt
     # Install the BLESMPServer
     git clone https://github.com/apferscher/ble-learning.git
-    cd ble-learning
+    cd ble-learning || exit
     git checkout febd774109c41a6635659b8847cc766e667841dd
-    cd libs/smp_server
+    cd libs/smp_server || exit
     python3 setup.py install
     cd ../../..
     rm -rf ble-learning
