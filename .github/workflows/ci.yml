@@ -55,7 +55,7 @@ jobs:
              newt upgrade --shallow 1
              cd repos/apache-mynewt-nimble
              git fetch --unshallow
-             git checkout 4659d199835ca680631fa3d54494377c8796e780
+             git checkout b0f06d8da8b8c4963b17ccfdc21eb91472c040be
              cd ../..
              newt build sim_testapp
       - name: Test NimBLE

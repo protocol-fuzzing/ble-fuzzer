@@ -74,10 +74,10 @@ digraph g {
 	s5 -> s1 [label="SM_DHKEY_CHECK / NORESPONSE"];
 	s5 -> s5 [label="ATT_READ_REQ / ATT_ERROR_RSP"];
 	s6 -> s0 [label="LL_ADV_CONNECT_IND / NORESPONSE"];
-	s6 -> s6 [label="LL_CTRL_ENC_REQ / NORESPONSE"];
+	s6 -> s0 [label="LL_CTRL_ENC_REQ / NORESPONSE"];
 	s6 -> s1 [label="LL_CTRL_START_ENC_RSP / LL_CTRL_START_ENC_RSP"];
-	s6 -> s6 [label="LL_CTRL_PAUSE_ENC_REQ / NORESPONSE"];
-	s6 -> s6 [label="LL_CTRL_PAUSE_ENC_RSP / NORESPONSE"];
+	s6 -> s0 [label="LL_CTRL_PAUSE_ENC_REQ / NORESPONSE"];
+	s6 -> s0 [label="LL_CTRL_PAUSE_ENC_RSP / NORESPONSE"];
 	s6 -> s0 [label="SM_PAIRING_REQ_SC / NORESPONSE"];
 	s6 -> s0 [label="SM_CONFIRM / NORESPONSE"];
 	s6 -> s0 [label="SM_RANDOM / NORESPONSE"];
