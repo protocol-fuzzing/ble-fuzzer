@@ -26,6 +26,8 @@ It is built upon the [ProtocolState-Fuzzer](https://github.com/protocol-fuzzing/
 
 ## Getting Started
 
+Note: See also [.github/workflows/ci.yml](.github/workflows/ci.yml) for the following steps. If build errors occur with the latest versions of ProtocolState-Fuzzer or NimBLE, try the commits specified there.
+
 1. Install ProtocolState-Fuzzer according to its [installation instructions](https://github.com/protocol-fuzzing/protocol-state-fuzzer?tab=readme-ov-file#installation)
 2. Set up and activate a python environment for ble-fuzzer: `source scripts/setup_venv.sh`
 3. Build ble-fuzzer: `mvn package`

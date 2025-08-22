@@ -10,7 +10,7 @@ After that, the tool can be used to download the necessary dependencies:
 
 ```sh
 cd workspace
-newt install
+newt upgrade --shallow 1
 ```
 
 ## Testing in software
