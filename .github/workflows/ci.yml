@@ -11,12 +11,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: ble-fuzzer
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: 'protocol-fuzzing/protocol-state-fuzzer'
           ref: 'ddef362dd042dba83e6a50067e38414194d72e60'
           path: protocol-state-fuzzer
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           java-version: '17'
           distribution: 'temurin'
