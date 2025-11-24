@@ -8,10 +8,10 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: ble-fuzzer
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           repository: 'protocol-fuzzing/protocol-state-fuzzer'
           ref: 'ddef362dd042dba83e6a50067e38414194d72e60'
