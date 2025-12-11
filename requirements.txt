@@ -1,4 +1,4 @@
-scapy==2.7.0
+scapy==2.7.0rc1
 colorama==0.4.6
 pycryptodome==3.21.0
 cffi==1.17.1
