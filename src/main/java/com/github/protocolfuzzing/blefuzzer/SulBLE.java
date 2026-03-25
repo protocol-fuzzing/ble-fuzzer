@@ -1,8 +1,5 @@
 package com.github.protocolfuzzing.blefuzzer;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
 import com.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.AbstractSul;
@@ -11,8 +8,9 @@ import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.sulwrappers.DynamicPortProvider;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.Mapper;
 import com.github.protocolfuzzing.protocolstatefuzzer.utils.CleanupTasks;
-
 import jep.SharedInterpreter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContextBLE> {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -32,7 +30,7 @@ public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContext
         if(config.getMapper() != null) {
             mapper += "_" + config.getMapper();
         }
-        
+
         // Set up the python interpreter for our mapper
         interp = new SharedInterpreter();
         interp.exec("import sys; sys.path.insert(0, 'py')");

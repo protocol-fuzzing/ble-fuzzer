@@ -1,9 +1,9 @@
 package com.github.protocolfuzzing.blefuzzer;
 
 import com.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
+import com.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
 import com.github.protocolfuzzing.blefuzzer.symbols.OutputBuilderBLE;
 import com.github.protocolfuzzing.blefuzzer.symbols.OutputCheckerBLE;
-import com.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.Mapper;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.OutputBuilder;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.OutputChecker;
@@ -32,5 +32,5 @@ public class MapperBLE implements Mapper<InputBLE, OutputBLE, ExecutionContextBL
     public OutputChecker<OutputBLE> getOutputChecker() {
         return outputChecker;
     }
-    
+
 }
