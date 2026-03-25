@@ -12,59 +12,100 @@ import jep.SharedInterpreter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContextBLE> {
     private static final Logger LOGGER = LogManager.getLogger();
+    private static boolean instanceCreated = false;
     protected MapperBLE dummyMapper;
     protected DynamicPortProvider dynamicPortProvider;
     protected SulServerConfigBLE config;
     protected CleanupTasks cleanupTasks;
     protected SharedInterpreter interp;
+    protected ExecutorService interpThread = Executors.newSingleThreadExecutor();
 
     public SulBLE(SulConfig sulConfig, CleanupTasks cleanupTasks) {
+        if (instanceCreated) {
+            throw new IllegalStateException("Only a single instance of SulBLE can communicate with the target device. Make sure that -eqvThreads=1");
+        }
+        instanceCreated = true;
+
         this.dummyMapper = new MapperBLE();
         this.config = (SulServerConfigBLE) sulConfig;
         this.cleanupTasks = cleanupTasks;
 
         // Find the right mapper to use
-        String mapper = "BLESUL";
-        if(config.getMapper() != null) {
-            mapper += "_" + config.getMapper();
-        }
+        String mapper = config.getMapper() != null ? "BLESUL_" + config.getMapper() : "BLESUL";
 
-        // Set up the python interpreter for our mapper
-        interp = new SharedInterpreter();
-        interp.exec("import sys; sys.path.insert(0, 'py')");
-        interp.exec(String.format("from %s import %s as SUL", mapper, mapper));
-        interp.exec(String.format("b = SUL('%s', '%s')", config.getAdapterSerialPort(), config.getTargetMacAddr()));
+        // Set up the python interpreter on a dedicated thread
+        pythonThreadRun(() -> interp = new SharedInterpreter());
+        pythonExec("import sys; sys.path.insert(0, 'py')");
+        pythonExec(String.format("from %s import %s as SUL", mapper, mapper));
+        pythonExec(String.format("b = SUL('%s', '%s')", config.getAdapterSerialPort(), config.getTargetMacAddr()));
 
         // Cleanup task to save the pcap and close the serial device
         cleanupTasks.submit(new Runnable() {
             @Override
             public void run() {
                 LOGGER.debug("Closing serial port...");
-                interp.exec("b.close()");
+                pythonExec("b.close()");
+                interpThread.shutdown();
             }
+        });
+    }
+
+    private <T> T pythonThreadRun(java.util.concurrent.Callable<T> task) {
+        try {
+            return interpThread.submit(task).get();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e.getCause());
+        }
+    }
+
+    private void pythonThreadRun(Runnable task) {
+        try {
+            interpThread.submit(task).get();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e.getCause());
+        }
+    }
+
+    protected void pythonExec(String s) {
+        pythonThreadRun(() -> interp.exec(s));
+    }
+
+    protected String pythonEval(String s) {
+        return pythonThreadRun(() -> {
+            interp.exec(String.format("__jep_out = str(%s)", s));
+            return (String) interp.getValue("__jep_out");
         });
     }
 
     @Override
     public void pre() {
         LOGGER.debug("SulBLE: pre");
-        interp.exec("b.pre()");
+        pythonExec("b.pre()");
     }
 
     @Override
     public OutputBLE step(InputBLE in) {
         LOGGER.debug("SulBLE: step");
-        interp.exec(String.format("outsym = b.step('%s')", in.getName()));
-        String outputSymbol = (String) interp.getValue("outsym");
+        String outputSymbol = pythonEval(String.format("b.step('%s')", in.getName()));
         return new OutputBLE(outputSymbol);
     }
 
     @Override
     public void post() {
         LOGGER.debug("SulBLE: post");
-        interp.exec("b.post()");
+        pythonExec("b.post()");
     }
 
 
