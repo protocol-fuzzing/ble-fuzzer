@@ -14,11 +14,11 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: 'protocol-fuzzing/protocol-state-fuzzer'
-          ref: 'ddef362dd042dba83e6a50067e38414194d72e60'
+          ref: '658a49d8b73ffca644ef3b05bf254177ed37d18b'
           path: protocol-state-fuzzer
       - uses: actions/setup-java@v5
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       - uses: actions/setup-go@v3
         with:
@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
              cd protocol-state-fuzzer
-             bash install.sh
+             mvn install
       - name: Build ble-fuzzer
         shell: bash
         run: |
