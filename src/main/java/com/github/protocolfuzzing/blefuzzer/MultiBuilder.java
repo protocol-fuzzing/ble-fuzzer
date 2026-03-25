@@ -43,7 +43,6 @@ public class MultiBuilder implements
     );
 
     protected SULBuilder<InputBLE, OutputBLE, ExecutionContextBLE> sulBuilder = new SulBuilderBLE();
-    protected SULWrapper<InputBLE, OutputBLE, ExecutionContextBLE> sulWrapper = new SULWrapperStandard<InputBLE, OutputBLE, ExecutionContextBLE>();
 
     @Override
     public StateFuzzerClientConfig buildClientConfig() {
