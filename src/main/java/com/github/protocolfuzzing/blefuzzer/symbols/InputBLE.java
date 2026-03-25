@@ -27,5 +27,5 @@ public class InputBLE extends AbstractInputXml<OutputBLE, Object, ExecutionConte
     public Object generateProtocolMessage(ExecutionContextBLE context) {
         throw new UnsupportedOperationException("Unimplemented method 'generateProtocolMessage'");
     }
-    
+
 }

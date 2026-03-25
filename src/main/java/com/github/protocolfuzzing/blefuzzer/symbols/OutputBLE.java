@@ -1,8 +1,8 @@
 package com.github.protocolfuzzing.blefuzzer.symbols;
 
-import java.util.Collections;
-
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.AbstractOutput;
+
+import java.util.Collections;
 
 public class OutputBLE extends AbstractOutput<OutputBLE, Object> {
     public OutputBLE(String name) {

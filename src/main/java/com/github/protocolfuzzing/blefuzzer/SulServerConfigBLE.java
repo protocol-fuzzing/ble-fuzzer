@@ -1,12 +1,12 @@
 package com.github.protocolfuzzing.blefuzzer;
 
-import java.io.PrintWriter;
-
 import com.beust.jcommander.Parameter;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SulServerConfig;
 
+import java.io.PrintWriter;
+
 public class SulServerConfigBLE implements SulServerConfig {
-    
+
     @Parameter(names = "-adapter", required = true,
                description = "The serial port of the test adapter")
     protected String serialPort = null;
@@ -31,7 +31,7 @@ public class SulServerConfigBLE implements SulServerConfig {
     public String getTargetMacAddr() {
         return targetMacAddr;
     }
-    
+
 
     @Override
     public String getHost() {
