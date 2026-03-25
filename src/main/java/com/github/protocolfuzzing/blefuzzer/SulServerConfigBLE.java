@@ -1,11 +1,11 @@
 package com.github.protocolfuzzing.blefuzzer;
 
 import com.beust.jcommander.Parameter;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SulServerConfig;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SULServerConfig;
 
 import java.io.PrintWriter;
 
-public class SulServerConfigBLE implements SulServerConfig {
+public class SulServerConfigBLE implements SULServerConfig {
 
     @Parameter(names = "-adapter", required = true,
                description = "The serial port of the test adapter")

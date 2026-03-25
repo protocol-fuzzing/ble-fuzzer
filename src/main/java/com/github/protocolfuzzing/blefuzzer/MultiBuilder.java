@@ -8,9 +8,9 @@ import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.alphabe
 import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.alphabet.xml.AlphabetSerializerXml;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.config.LearnerConfigStandard;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.statistics.MealyMachineWrapper;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SulBuilder;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SulWrapper;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SulWrapperStandard;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULBuilder;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULWrapper;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULWrapperStandard;
 import com.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.core.StateFuzzer;
 import com.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.core.StateFuzzerBuilder;
 import com.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.core.StateFuzzerComposerStandard;
@@ -42,8 +42,8 @@ public class MultiBuilder implements
         new AlphabetSerializerXml<InputBLE, AlphabetPojoXmlBLE>(InputBLE.class, AlphabetPojoXmlBLE.class)
     );
 
-    protected SulBuilder<InputBLE, OutputBLE, ExecutionContextBLE> sulBuilder = new SulBuilderBLE();
-    protected SulWrapper<InputBLE, OutputBLE, ExecutionContextBLE> sulWrapper = new SulWrapperStandard<InputBLE, OutputBLE, ExecutionContextBLE>();
+    protected SULBuilder<InputBLE, OutputBLE, ExecutionContextBLE> sulBuilder = new SulBuilderBLE();
+    protected SULWrapper<InputBLE, OutputBLE, ExecutionContextBLE> sulWrapper = new SULWrapperStandard<InputBLE, OutputBLE, ExecutionContextBLE>();
 
     @Override
     public StateFuzzerClientConfig buildClientConfig() {
@@ -63,17 +63,17 @@ public class MultiBuilder implements
     @Override
     public StateFuzzer<MealyMachineWrapper<InputBLE, OutputBLE>> build(StateFuzzerEnabler stateFuzzerEnabler) {
         return new StateFuzzerStandard<InputBLE, OutputBLE>(
-            new StateFuzzerComposerStandard<InputBLE, OutputBLE, ExecutionContextBLE>(stateFuzzerEnabler, alphabetBuilder, sulBuilder, sulWrapper).initialize()
+            new StateFuzzerComposerStandard<InputBLE, OutputBLE, ExecutionContextBLE>(stateFuzzerEnabler, alphabetBuilder, sulBuilder).initialize()
         );
     }
 
     @Override
     public TestRunner build(TestRunnerEnabler testRunnerEnabler) {
-        return new TestRunnerStandard<InputBLE, OutputBLE, Object, ExecutionContextBLE>(testRunnerEnabler, alphabetBuilder, sulBuilder, sulWrapper).initialize();
+        return new TestRunnerStandard<InputBLE, OutputBLE, Object, ExecutionContextBLE>(testRunnerEnabler, alphabetBuilder, sulBuilder).initialize();
     }
 
     @Override
     public TimingProbe build(TimingProbeEnabler timingProbeEnabler) {
-        return new TimingProbeStandard<InputBLE, OutputBLE, Object, ExecutionContextBLE>(timingProbeEnabler, alphabetBuilder, sulBuilder, sulWrapper).initialize();
+        return new TimingProbeStandard<InputBLE, OutputBLE, Object, ExecutionContextBLE>(timingProbeEnabler, alphabetBuilder, sulBuilder).initialize();
     }
 }
