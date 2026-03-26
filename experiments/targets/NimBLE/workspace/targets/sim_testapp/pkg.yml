@@ -9,6 +9,7 @@ pkg.deps:
 
 pkg.cflags:
     - -Wno-incompatible-pointer-types
+    - -Wno-unused-function
 #    - -fsanitize=address,undefined
 
 pkg.lflags:

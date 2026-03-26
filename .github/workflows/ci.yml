@@ -47,16 +47,7 @@ jobs:
         run: |
              set -ex
              cd ble-fuzzer/experiments/targets/NimBLE/workspace
-             # Clone everything shallow and then unshallow mynewt-nimble
-             # to pin the version of our target. This is not ideal and I'm
-             # not sure if the interface between mynewt-core and mynewt-nimble
-             # can break when the former is updated. When they do a proper
-             # release again, we should pin the versions in project.yml instead.
              newt upgrade --shallow 1
-             cd repos/apache-mynewt-nimble
-             git fetch --unshallow
-             git checkout b0f06d8da8b8c4963b17ccfdc21eb91472c040be
-             cd ../..
              newt build sim_testapp
       - name: Test NimBLE
         shell: bash
