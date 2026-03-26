@@ -2,9 +2,9 @@ package com.github.protocolfuzzing.blefuzzer;
 
 import com.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
 import com.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.AbstractSul;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SulAdapter;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SulConfig;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.AbstractSUL;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULAdapter;
+import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SULConfig;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.sulwrappers.DynamicPortProvider;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.Mapper;
 import com.github.protocolfuzzing.protocolstatefuzzer.utils.CleanupTasks;
@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContextBLE> {
+public class SulBLE implements AbstractSUL<InputBLE, OutputBLE, ExecutionContextBLE> {
     private static final Logger LOGGER = LogManager.getLogger();
     private static boolean instanceCreated = false;
     protected MapperBLE dummyMapper;
@@ -26,7 +26,7 @@ public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContext
     protected SharedInterpreter interp;
     protected ExecutorService interpThread = Executors.newSingleThreadExecutor();
 
-    public SulBLE(SulConfig sulConfig, CleanupTasks cleanupTasks) {
+    public SulBLE(SULConfig sulConfig, CleanupTasks cleanupTasks) {
         if (instanceCreated) {
             throw new IllegalStateException("Only a single instance of SulBLE can communicate with the target device. Make sure that -eqvThreads=1");
         }
@@ -110,7 +110,7 @@ public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContext
 
 
     @Override
-    public SulConfig getSulConfig() {
+    public SULConfig getSULConfig() {
         return config;
     }
 
@@ -135,7 +135,7 @@ public class SulBLE implements AbstractSul<InputBLE, OutputBLE, ExecutionContext
     }
 
     @Override
-    public SulAdapter getSulAdapter() {
+    public SULAdapter getSULAdapter() {
         return null;
     }
 }
