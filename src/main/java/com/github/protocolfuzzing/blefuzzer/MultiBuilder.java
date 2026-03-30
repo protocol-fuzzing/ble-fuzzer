@@ -9,8 +9,6 @@ import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.alphabe
 import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.config.LearnerConfigStandard;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.learner.statistics.MealyMachineWrapper;
 import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULBuilder;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULWrapper;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULWrapperStandard;
 import com.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.core.StateFuzzer;
 import com.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.core.StateFuzzerBuilder;
 import com.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.core.StateFuzzerComposerStandard;
