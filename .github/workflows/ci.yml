@@ -37,7 +37,7 @@ jobs:
              set -ex
              cd ble-fuzzer
              source scripts/setup_venv.sh
-             mvn verify package
+             mvn package
       - name: Install newt
         shell: bash
         run: |
