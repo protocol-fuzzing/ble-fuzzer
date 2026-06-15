@@ -18,7 +18,7 @@
     <dependency>
       <groupId>com.github.protocolfuzzing</groupId>
       <artifactId>protocolstatefuzzer</artifactId>
-      <version>1.0.0</version>
+      <version>O.1.0</version>
     </dependency>
     <dependency>
       <groupId>black.ninia</groupId>
@@ -58,7 +58,7 @@
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
         <artifactId>spotless-maven-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.6.0</version>
         <configuration>
           <formats>
             <format>
