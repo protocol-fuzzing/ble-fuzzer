@@ -1,6 +1,6 @@
-package com.github.protocolfuzzing.blefuzzer.symbols;
+package io.github.protocolfuzzing.blefuzzer.symbols;
 
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.OutputBuilder;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.OutputBuilder;
 
 public class OutputBuilderBLE extends OutputBuilder<OutputBLE> {
 

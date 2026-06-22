@@ -1,8 +1,8 @@
-package com.github.protocolfuzzing.blefuzzer;
+package io.github.protocolfuzzing.blefuzzer;
 
-import com.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
-import com.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.context.ExecutionContext;
+import io.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
+import io.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.context.ExecutionContext;
 
 public class ExecutionContextBLE implements ExecutionContext<InputBLE, OutputBLE, Object> {
     public ExecutionContextBLE() {}

@@ -6,10 +6,10 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.github.protocolfuzzing.blefuzzer" level="trace" additivity="false">
+        <Logger name="io.github.protocolfuzzing.blefuzzer" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="com.github.protocolfuzzing.protocolstatefuzzer" level="trace" additivity="false">
+        <Logger name="io.github.protocolfuzzing.protocolstatefuzzer" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
         <Root level="error">

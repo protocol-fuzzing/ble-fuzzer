@@ -1,8 +1,8 @@
-package com.github.protocolfuzzing.blefuzzer.symbols;
+package io.github.protocolfuzzing.blefuzzer.symbols;
 
-import com.github.protocolfuzzing.blefuzzer.ExecutionContextBLE;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.AbstractInputXml;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.OutputChecker;
+import io.github.protocolfuzzing.blefuzzer.ExecutionContextBLE;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.AbstractInputXml;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.abstractsymbols.OutputChecker;
 
 public class InputBLE extends AbstractInputXml<OutputBLE, Object, ExecutionContextBLE> {
 
