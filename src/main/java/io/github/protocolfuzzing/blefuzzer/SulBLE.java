@@ -1,13 +1,13 @@
-package com.github.protocolfuzzing.blefuzzer;
+package io.github.protocolfuzzing.blefuzzer;
 
-import com.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
-import com.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.AbstractSUL;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULAdapter;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SULConfig;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.sulwrappers.DynamicPortProvider;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.Mapper;
-import com.github.protocolfuzzing.protocolstatefuzzer.utils.CleanupTasks;
+import io.github.protocolfuzzing.blefuzzer.symbols.InputBLE;
+import io.github.protocolfuzzing.blefuzzer.symbols.OutputBLE;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.AbstractSUL;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.SULAdapter;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SULConfig;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.sulwrappers.DynamicPortProvider;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.mapper.Mapper;
+import io.github.protocolfuzzing.protocolstatefuzzer.utils.CleanupTasks;
 import jep.SharedInterpreter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

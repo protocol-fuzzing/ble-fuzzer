@@ -1,7 +1,7 @@
-package com.github.protocolfuzzing.blefuzzer;
+package io.github.protocolfuzzing.blefuzzer;
 
 import com.beust.jcommander.Parameter;
-import com.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SULServerConfig;
+import io.github.protocolfuzzing.protocolstatefuzzer.components.sul.core.config.SULServerConfig;
 
 import java.io.PrintWriter;
 
