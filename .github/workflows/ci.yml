@@ -49,7 +49,7 @@ jobs:
              sleep 2
              SERIAL_PORT=$(cat iface.txt | cut -d ' ' -f 3)
              mkdir -p experiments/results/NimBLE_pairing
-             java -jar target/ble-fuzzer-1.0-SNAPSHOT.jar @experiments/args/NimBLE_pairing -mapper CI -adapter $SERIAL_PORT -roundLimit 4 &> experiments/results/NimBLE_pairing/test.log
+             java -jar target/ble-fuzzer-1.0-SNAPSHOT.jar @experiments/args/NimBLE_pairing -mapper CI -adapter $SERIAL_PORT -roundLimit 4 -eqvThreads 8 &> experiments/results/NimBLE_pairing/test.log
              ./scripts/diff_hyps.sh experiments/results_saved/NimBLE_pairing experiments/results/NimBLE_pairing 4
       - uses: actions/upload-artifact@v4
         if: always()
