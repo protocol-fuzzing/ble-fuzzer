@@ -3,5 +3,5 @@ colorama==0.4.6
 pycryptodome==3.21.0
 cffi==1.17.1
 pyserial==3.5
-jep==4.2.2
+jep==4.3.1
 setuptools==80.9.0
