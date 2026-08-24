@@ -23,7 +23,7 @@
     <dependency>
       <groupId>black.ninia</groupId>
       <artifactId>jep</artifactId> 
-      <version>4.3.1</version>
+      <version>4.3.2</version>
     </dependency>
   </dependencies>
 
@@ -58,7 +58,7 @@
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
         <artifactId>spotless-maven-plugin</artifactId>
-        <version>3.9.0</version>
+        <version>3.10.0</version>
         <configuration>
           <formats>
             <format>
@@ -106,7 +106,7 @@
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>4.10.3.0</version>
+        <version>4.10.4.0</version>
         <configuration>
           <threshold>High</threshold>
           <includeFilterFile>.spotbugs/include.xml</includeFilterFile>
