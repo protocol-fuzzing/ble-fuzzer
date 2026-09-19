@@ -13,7 +13,7 @@ public class Main {
         // single parentLogger, if Main resides in the outermost package
         String[] parentLoggers = {Main.class.getPackageName()};
 
-        CommandLineParser<MealyMachineWrapper<InputBLE, OutputBLE>> commandLineParser = new CommandLineParser<MealyMachineWrapper<InputBLE, OutputBLE>>(mb, mb, mb, mb, mb, mb);
+        CommandLineParser<MealyMachineWrapper<InputBLE, OutputBLE>> commandLineParser = new CommandLineParser<MealyMachineWrapper<InputBLE, OutputBLE>>(mb, mb, mb, mb, mb, mb, mb, mb, mb);
         commandLineParser.setExternalParentLoggers(parentLoggers);
 
         commandLineParser.process(args, true);

@@ -26,6 +26,18 @@ import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.difftester.Diff
 import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.difftester.config.DiffTesterConfig;
 import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.difftester.config.DiffTesterConfigBuilder;
 import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.difftester.config.DiffTesterConfigStandard;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.Fingerprint;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.FingerprintBuilder;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.FingerprintStandard;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.config.FingerprintConfig;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.config.FingerprintConfigBuilder;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.config.FingerprintConfigStandard;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.fingerprint.core.config.FingerprintEnabler;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.identifier.core.Identifier;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.identifier.core.IdentifierBuilder;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.identifier.core.IdentifierStandard;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.identifier.core.config.IdentifierConfigStandard;
+import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.identifier.core.config.IdentifierEnabler;
 import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.testrunner.core.TestRunner;
 import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.testrunner.core.TestRunnerBuilder;
 import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.testrunner.core.TestRunnerStandard;
@@ -40,10 +52,13 @@ import io.github.protocolfuzzing.protocolstatefuzzer.statefuzzer.testrunner.timi
 public class MultiBuilder implements
     StateFuzzerConfigBuilder,
     DiffTesterConfigBuilder,
+    FingerprintConfigBuilder,
     StateFuzzerBuilder<MealyMachineWrapper<InputBLE, OutputBLE>>,
     DiffTesterBuilder,
+    FingerprintBuilder,
     TestRunnerBuilder,
-    TimingProbeBuilder {
+    TimingProbeBuilder,
+    IdentifierBuilder<MealyMachineWrapper<InputBLE, OutputBLE>> {
 
     protected AlphabetBuilder<InputBLE> alphabetBuilder = new AlphabetBuilderStandard<InputBLE>(
         new AlphabetSerializerXml<InputBLE, AlphabetPojoXmlBLE>(InputBLE.class, AlphabetPojoXmlBLE.class)
@@ -53,7 +68,7 @@ public class MultiBuilder implements
 
     @Override
     public StateFuzzerClientConfig buildClientConfig() {
-        return new StateFuzzerClientConfigStandard(null, null, null, null);
+        return new StateFuzzerClientConfigStandard(null, null, null, null, null);
     }
 
     @Override
@@ -62,13 +77,19 @@ public class MultiBuilder implements
             new LearnerConfigStandard(),
             new SulServerConfigBLE(),
             new TestRunnerConfigStandard(),
-            new TimingProbeConfigStandard()
+            new TimingProbeConfigStandard(),
+            new IdentifierConfigStandard()
         );
     }
 
     @Override
     public DiffTesterConfig buildConfig() {
         return new DiffTesterConfigStandard();
+    }
+
+    @Override
+    public FingerprintConfig buildFingerprintConfig() {
+        return new FingerprintConfigStandard();
     }
 
     @Override
@@ -84,6 +105,11 @@ public class MultiBuilder implements
     }
 
     @Override
+    public Fingerprint build(FingerprintEnabler fingerprintEnabler) {
+        return new FingerprintStandard<>(fingerprintEnabler, alphabetBuilder);
+    }
+
+    @Override
     public TestRunner build(TestRunnerEnabler testRunnerEnabler) {
         return new TestRunnerStandard<InputBLE, OutputBLE, Object, ExecutionContextBLE>(testRunnerEnabler, alphabetBuilder, sulBuilder).initialize();
     }
@@ -91,5 +117,10 @@ public class MultiBuilder implements
     @Override
     public TimingProbe build(TimingProbeEnabler timingProbeEnabler) {
         return new TimingProbeStandard<InputBLE, OutputBLE, Object, ExecutionContextBLE>(timingProbeEnabler, alphabetBuilder, sulBuilder).initialize();
+    }
+
+    @Override
+    public Identifier<MealyMachineWrapper<InputBLE, OutputBLE>> build(IdentifierEnabler identifierEnabler) {
+        return new IdentifierStandard<>(identifierEnabler, alphabetBuilder, sulBuilder).initialize();
     }
 }
