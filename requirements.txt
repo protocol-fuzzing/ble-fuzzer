@@ -4,4 +4,4 @@ pycryptodome==3.21.0
 cffi==1.17.1
 pyserial==3.5
 jep==4.3.2
-setuptools==83.0.0
+setuptools==84.1.0
