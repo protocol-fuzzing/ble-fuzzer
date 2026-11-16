@@ -23,7 +23,7 @@
     <dependency>
       <groupId>black.ninia</groupId>
       <artifactId>jep</artifactId> 
-      <version>4.3.2</version>
+      <version>4.4.0</version>
     </dependency>
   </dependencies>
 
